@@ -35,10 +35,13 @@ namespace UnicamFattoriale
                         int risultato = 1;
                         while (numero > 0) {
                             try {
-                                risultato *= numero;
-                            } catch(ArgumentOutOfRangeException) {
+                                checked {
+                                    risultato *= numero;
+                                }
+                            } catch(Exception e) {
                                 Console.WriteLine("Il numero è troppo grande ");
                                 Console.ReadKey();
+                                return;
                             }
                             numero--; 
                         }
